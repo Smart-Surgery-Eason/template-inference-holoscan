@@ -1,0 +1,72 @@
+%YAML 1.2
+# SPDX-FileCopyrightText: Copyright (c) 2022-2023 NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+# SPDX-License-Identifier: Apache-2.0
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+# http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+---
+replayer:  # VideoStreamReplayer
+  basename: "dentistry_photos"
+  frame_rate: 0 # as specified in timestamps
+  repeat: false # default: false
+  realtime: false # default: true
+  count: 0 # default: 0 (no frame count restriction)
+
+segmentation_preprocessor:  # FormatConverter
+  out_tensor_name: dentistry_preprocessed
+  out_dtype: "float32"
+  resize_width: 384
+  resize_height: 384
+
+inference:  # Inference
+  backend: "trt"
+  pre_processor_map: 
+    "dentistry_seg": ["dentistry_preprocessed"]
+  inference_map: 
+    "dentistry_seg": ["dentistry_seg_inferred"]
+  enable_fp16: true
+
+segmentation_postprocessor:  # SegmentationPostprocessorOp
+  in_tensor_name: dentistry_seg_inferred
+  network_output_type: softmax
+  data_format: nhwc
+
+segmentation_color_mapper:
+  color_list: [
+    [0, 240, 255],
+    [65, 127, 0],
+    [0, 0, 255],
+    [113, 41, 29],
+    [122, 21, 135],
+    [0, 148, 242],
+    [4, 84, 234],
+    [0, 208, 178],
+    [52, 97, 148],
+    [121, 121, 121],
+    [212, 149, 27],
+    [206, 171, 255],
+    [110, 28, 216]
+  ]
+
+viz:  # Holoviz
+  color_lut: [
+    [0.65, 0.81, 0.89, 0.1],
+    [0.2, 0.63, 0.17, 0.7],
+    [0.98, 0.6, 0.6, 0.7],
+    [0.89, 0.1, 0.11, 0.7],
+    [0.99, 0.75, 0.44, 0.7],
+    [1.0, 0.5, 0.0, 0.7],
+    [0.0, 0.0, 0.0, 0.1]
+  ]
+recorder:
+  basename: "image_postprocessed"
+

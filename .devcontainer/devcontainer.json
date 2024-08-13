@@ -1,0 +1,12 @@
+{
+	"name": "dentistry-holoscan",
+	"image": "nvcr.io/nvidia/clara-holoscan/holoscan:v2.2.0-dgpu",
+	"customizations": {
+		"jetbrains": {
+			"backend": "CLion"
+		}
+	},
+	"runArgs": [
+		"--runtime=nvidia"
+	]
+}
