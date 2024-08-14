@@ -19,4 +19,4 @@ target_link_libraries(template_test
 
 include(GoogleTest)
 
-add_test(NAME TemplateTest COMMAND template_test WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
+add_test(NAME TemplateTests COMMAND template_test WORKING_DIRECTORY ${CMAKE_BINARY_DIR})
