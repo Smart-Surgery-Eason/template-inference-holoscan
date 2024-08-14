@@ -16,9 +16,9 @@ ENV HOLOSCAN_INPUT_PATH=${HOLOSCAN_WORKDIR}/input
 ENV HOLOSCAN_MODEL_PATH=${HOLOSCAN_WORKDIR}/models
 ENV HOLOSCAN_OUTPUT_PATH=${HOLOSCAN_WORKDIR}/output
 
-# Copy installed libraries and data from the builder stage
-COPY --from=builder /usr/local /usr/local
-COPY --from=builder /var/holoscan /var/holoscan
+## Copy installed libraries and data from the builder stage
+# COPY --from=builder /usr/local /usr/local
+# COPY --from=builder /var/holoscan /var/holoscan
 
 WORKDIR /app
 COPY . .
