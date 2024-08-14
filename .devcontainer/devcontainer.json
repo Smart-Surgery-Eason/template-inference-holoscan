@@ -1,5 +1,5 @@
 {
-	"name": "dentistry-holoscan",
+	"name": "holoscan-template",
 	"image": "nvcr.io/nvidia/clara-holoscan/holoscan:v2.2.0-dgpu",
 	"customizations": {
 		"jetbrains": {

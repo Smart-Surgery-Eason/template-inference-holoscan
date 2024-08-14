@@ -24,7 +24,7 @@ WORKDIR /app
 COPY . .
 
 # Remove the 'data' directory and set up necessary directories
-RUN rm -r data && \
+RUN rm -rf data && \
     mkdir -p ${HOLOSCAN_WORKDIR} ${HOLOSCAN_INPUT_PATH} ${HOLOSCAN_OUTPUT_PATH} ${HOLOSCAN_MODEL_PATH}
 #    && \
 #    cmake . && \

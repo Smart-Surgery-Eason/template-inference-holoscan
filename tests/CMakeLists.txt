@@ -8,7 +8,6 @@ add_executable(dentistry_test
 target_include_directories(dentistry_test
         PRIVATE
         ${CMAKE_SOURCE_DIR}/src
-        ${OpenCV_INCLUDE_DIRS}
 )
 
 target_link_libraries(dentistry_test
@@ -16,15 +15,6 @@ target_link_libraries(dentistry_test
         GTest::gtest
         GTest::gtest_main
         holoscan::core
-        holoscan::ops::format_converter
-        holoscan::ops::holoviz
-        holoscan::ops::inference
-        holoscan::ops::segmentation_postprocessor
-        holoscan::ops::video_stream_replayer
-        holoscan::ops::video_stream_recorder
-        ${OpenCV_LIBS}
-        dentistry_util
-        dentistry_ops
 )
 
 include(GoogleTest)

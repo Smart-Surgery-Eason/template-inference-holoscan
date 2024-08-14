@@ -20,7 +20,7 @@ add_executable(template
 
 set(CMAKE_CUDA_ARCHITECTURES "70;80;90")
 
-target_link_libraries(dentistry
+target_link_libraries(template
         PRIVATE
         holoscan::core
         holoscan::ops::format_converter
@@ -29,11 +29,10 @@ target_link_libraries(dentistry
         holoscan::ops::segmentation_postprocessor
         holoscan::ops::video_stream_replayer
         holoscan::ops::video_stream_recorder
-        dentistry_ops
 )
 
 
-set_target_properties(dentistry PROPERTIES CUDA_ARCHITECTURES "80;90")
+set_target_properties(template PROPERTIES CUDA_ARCHITECTURES "80;90")
 
 # testing
 enable_testing()
