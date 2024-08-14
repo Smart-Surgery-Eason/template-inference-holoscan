@@ -23,12 +23,6 @@ set(CMAKE_CUDA_ARCHITECTURES "70;80;90")
 target_link_libraries(template
         PRIVATE
         holoscan::core
-        holoscan::ops::format_converter
-        holoscan::ops::holoviz
-        holoscan::ops::inference
-        holoscan::ops::segmentation_postprocessor
-        holoscan::ops::video_stream_replayer
-        holoscan::ops::video_stream_recorder
 )
 
 
