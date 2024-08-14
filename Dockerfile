@@ -21,7 +21,7 @@ ENV HOLOSCAN_OUTPUT_PATH=${HOLOSCAN_WORKDIR}/output
 # COPY --from=builder /var/holoscan /var/holoscan
 
 WORKDIR /app
-COPY . .
+COPY ./* .
 
 # Remove the 'data' directory and set up necessary directories
 RUN rm -rf data && \
