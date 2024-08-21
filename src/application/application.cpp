@@ -46,4 +46,6 @@ bool parse_arguments(int argc, char **argv, std::string &config_name, std::strin
 }
 
 int main(int argc, char *argv[]) {
+    std::cout << "Hello World!";
+    return 0;
 }
